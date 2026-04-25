@@ -85,18 +85,18 @@
       
         <p>-–<br>title:week1<br>date: 2026-04-17 20:00:00<br>tags: [Hexo, 教程]<br>-–</p>
 <h1 id="Week1"><a href="#Week1" class="headerlink" title="Week1"></a>Week1</h1><h2 id="puzzle"><a href="#puzzle" class="headerlink" title="puzzle"></a>puzzle</h2><p>查壳，用ida打开</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-15 185305.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260419182443951.png" alt="puzzle"></p>
 <p>打开后分析</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-16 191403.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260425162629193.png" alt="puzzle"></p>
 <p>根据提示，得知要找到4个part，才能得到flag</p>
 <p>根据提示，双击puzzle_challenge找到第一个part</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-16 191418.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260425163400771.png" alt="puzzle"></p>
 <p>分析可知，“Do_Y0u”可以进入游戏，所以这就是flag的一部分</p>
 <p>接着，找到第二个part</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-16 192202.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260425163251156.png" alt="puzzle"></p>
 <p>提示，第二段part与功能的名字有关，观察函数名字，得知”Like_7his_Jig“为第二个part</p>
 <p>在函数名字一栏可以看到part3，双击进入，分析函数</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-16 191657.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260425163419964.png" alt="puzzle"></p>
 <p>很明显，这是一个异或操作，提取出encrypted_array中的数据，写一段脚本和0xAD异或，脚本如下：</p>
 <p><code>data = [0xDE, 0xED, 0xDA, 0xF2, 0xDD, 0xD8, 0xD7, 0xD7, 0x00]</code><br><code>key = 0xAD</code></p>
 <p><code>results = []</code><br><code>for byte in data:</code><br>    <code>result = byte ^ key</code><br>    <code>results.append(result)</code></p>
@@ -105,18 +105,18 @@
 <p><code>print(&quot;ASCII字符表示:&quot;, &#39;&#39;.join(ascii_chars))</code></p>
 <p>最后运行出来结果就是part3 ”s@w_puzz“</p>
 <p>最后，在界面找到part4</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-16 191521.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260425163436592.png" alt="puzzle"></p>
 <p>所以，part4就是”1e_Gam3”</p>
 <p>最后，把这4段拼在一起就是最后的flag</p>
 <p>flag{Do_Y0u_Like_7his_Jigs@w_puzz1e_Gam3}</p>
 <h2 id="Strange-base"><a href="#Strange-base" class="headerlink" title="Strange-base"></a>Strange-base</h2><p>查壳，ida打开，分析</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-16 203852.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260425163449293.png" alt="base"></p>
 <p>分析可知，b2已知，对b1（flag）进行base64_encode操作后与b2一样，双击函数跟进，发现是base64加密，但不是标准加密，有映射字符，双击提取</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-16 203910.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260425163504446.png" alt="base"></p>
 <p>最后解密，得到flag</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-16 204007.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260425163516261.png" alt="base"></p>
 <h2 id="XOR"><a href="#XOR" class="headerlink" title="XOR"></a>XOR</h2><p>查壳，打开，分析</p>
-<p>![](C:\Users\39172\Pictures\Screenshots\屏幕截图 2026-04-16 205206.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaoyifei0113/yaoyifei0113.github.io@main//picture/20260425163527259.png" alt="xor"></p>
 <p>分析可知，对str先判断长度，由结果可知是24，再判断i除以3的余数，进而对其进行异或操作，接着初始化v 5的值，再进行第二次异或操作，逆着进行解密，脚本如下：</p>
 <p><code>目标字符串</code></p>
 <p><code>target_str = &quot;anu_ym7wKL1$P]v3q%D]lHpi&quot;</code></p>
@@ -135,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/16/week1/" data-id="cuidHFT-hpKf-tinJDLOSFgvC" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/16/week1/" data-id="cuid98PTsgAqgNxgXwqGA3LXw" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -186,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/23/hello-world/" data-id="cuidB-3s9hRyALHWYjthQDY1M" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/23/hello-world/" data-id="cuidDfHo0nvSXwmdsquxqNWd3" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
